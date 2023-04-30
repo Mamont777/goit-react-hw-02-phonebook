@@ -1,4 +1,5 @@
 .wrapper {
+    position: relative;
     width: 400px;
     margin: 30px auto;
     font-weight: 700;
@@ -22,7 +23,7 @@ label {
     display: flex;
     flex-direction: column;
     margin: 5px 0 25px 0;
-    padding-top: 5px;
+    padding-top: 15px;
     font-size: 18px;
     font-weight: 600;
 }
@@ -68,4 +69,20 @@ label {
 .btn[type="submit"]:active {
     background: rgb(33, 147, 90);
     box-shadow: 0 3px rgb(33, 147, 90) inset;
+}
+
+.icon {
+    margin-right: 8px;
+}
+
+.wrapper__icon {
+    position: absolute;
+    top: 18px;
+    left: 152px;
+}
+
+.wrapper__iconPhone {
+    position: absolute;
+    top: 143px;
+    left: 140px;
 }

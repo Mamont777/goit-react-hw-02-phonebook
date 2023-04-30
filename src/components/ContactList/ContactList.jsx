@@ -1,4 +1,5 @@
 import PropTypes from 'prop-types';
+import { TiUserDeleteOutline } from 'react-icons/ti';
 import css from './ContactList.module.css';
 
 function ContactList({ contacts, onDelete }) {
@@ -16,6 +17,7 @@ function ContactList({ contacts, onDelete }) {
               onClick={() => onDelete(id)}
             >
               Delete
+              <TiUserDeleteOutline size="16" className={css.icon} />
             </button>
           </p>
         </li>

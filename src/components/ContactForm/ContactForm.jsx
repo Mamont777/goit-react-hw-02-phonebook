@@ -1,5 +1,8 @@
 import { Component } from 'react';
 import PropTypes from 'prop-types';
+import { RiUserAddLine } from 'react-icons/ri';
+import { IoMdPersonAdd } from 'react-icons/io';
+import { BsFillTelephoneFill } from 'react-icons/bs';
 import css from './ContactForm.module.css';
 
 const INITIAL_STATE = {
@@ -35,6 +38,7 @@ class ContactForm extends Component {
       <div className={css.wrapper}>
         <form onSubmit={this.handleSubmit}>
           <label>
+            <IoMdPersonAdd size="16" className={css.wrapper__icon} />
             Name
             <input
               className={css.dataInput}
@@ -48,6 +52,7 @@ class ContactForm extends Component {
             />
           </label>
           <label>
+            <BsFillTelephoneFill size="16" className={css.wrapper__iconPhone} />
             Number
             <input
               className={css.dataInput}
@@ -61,6 +66,7 @@ class ContactForm extends Component {
             />
           </label>
           <button type="submit" className={css.btn}>
+            <RiUserAddLine size="16" className={css.icon} />
             Add contact
           </button>
         </form>

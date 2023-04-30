@@ -38,7 +38,8 @@
     box-shadow: rgba(0, 0, 0, 0.24) 10px 10px 5px 0px;
     color: green;
     cursor: pointer;
-    display: inline-block;
+    display: flex;
+    align-items: center;
     font-family: CerebriSans-Regular, -apple-system, system-ui, Roboto, sans-serif;
     padding: 7px 20px;
     text-align: center;
@@ -59,4 +60,8 @@
 .btnDel:active {
     background: rgb(33, 147, 90);
     box-shadow: 0 3px rgb(33, 147, 90) inset;
+}
+
+.icon {
+    margin-left: 5px;
 }

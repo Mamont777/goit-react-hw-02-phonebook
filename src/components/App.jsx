@@ -1,8 +1,21 @@
 import { Component } from 'react';
 import { nanoid } from 'nanoid';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 import ContactForm from './ContactForm';
 import ContactList from './ContactList';
 import Filter from './Filter';
+
+const notifyOptions = {
+  position: 'top-right',
+  autoClose: 5000,
+  hideProgressBar: false,
+  closeOnClick: true,
+  pauseOnHover: true,
+  draggable: true,
+  progress: undefined,
+  theme: 'colored',
+};
 
 export class App extends Component {
   state = {
@@ -15,13 +28,22 @@ export class App extends Component {
     filter: '',
   };
 
-  formSubmitHandler = data => {
-    console.log(data);
+  addContact = ({ name, number }) => {
     const contact = {
       id: nanoid(10),
-      name: data.name,
-      number: data.number,
+      name,
+      number,
     };
+
+    const existingContact = this.state.contacts.find(
+      ({ name }) => name === contact.name
+    );
+
+    if (existingContact) {
+      toast.error(`${contact.name} is already in contacts`, notifyOptions);
+      return;
+    }
+
     this.setState(({ contacts }) => ({
       contacts: [contact, ...contacts],
     }));
@@ -51,7 +73,7 @@ export class App extends Component {
     return (
       <div>
         <h1>Phonebook</h1>
-        <ContactForm onSubmit={this.formSubmitHandler} />
+        <ContactForm onSubmit={this.addContact} />
 
         <h2>Contacts</h2>
         <Filter value={filter} onChange={this.changeFilter} />
@@ -59,6 +81,7 @@ export class App extends Component {
           contacts={filteredContacts}
           onDelete={this.deleteContact}
         />
+        <ToastContainer />
       </div>
     );
   }
